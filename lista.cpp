@@ -103,7 +103,7 @@ struct List {
         }
         Node *n = new Node(value);
         Node *p = start;
-        for (int i = 0; i < index - 1; i++) {
+        while (--index) {
             p = p->next;
         }
         n->next = p->next;
