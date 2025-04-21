@@ -60,18 +60,19 @@ struct List {
         count = 0;
     }
 
-    void popFront() {
+    bool popFront() {
         if (empty()) {
-            return;
+            return false;
         }
         if (size() == 1) {
             clearWhenOne();
-            return;
+            return false;
         }
         Node *aux = start;
         start = start->next;
         delete(aux);
         count--;
+        return true;
     }
 
     void popBack() {
@@ -137,6 +138,58 @@ struct List {
             aux = aux->next;
         }
     }
+
+    // Exercícios
+
+    void popBackToNumber(int n) {
+        while (n--) {
+            popBack();
+        }
+    }
+
+    void removeSecondElement(int n) {
+        if (n >= count) {
+            while (popFront()) {
+
+            }
+            return;
+        }
+        Node *aux = start;
+        for (int i = 0; i < count - n - 1; i++) {
+            aux = aux->next;
+        }
+        end = aux;
+        count -= n;
+        while (n--) {
+            Node *toDel = aux->next;
+            aux->next = toDel->next;
+            delete(toDel);
+        }
+    }
+
+    void insertEnd() {
+        pushBack(count);
+    }
+
+    void pushBackOneToNumber(int n) {
+        for (int i = 1; i <= n; i++) {
+            pushBack(i);
+        }
+    }
+
+    void pushPenultimate(int value) {
+        if (count <= 1) {
+            return;
+        }
+        Node *aux = start;
+        while (aux->next != end) {
+            aux = aux->next;
+        }
+        Node *n = new Node(value);
+        n->next = end;
+        aux->next = n;
+        count++;
+    }
 };
 
 int main() {
@@ -160,7 +213,29 @@ int main() {
     l.popFront();
     l.popFront();
     l.popBack();
-    l.remove(2);
-    l.insert(3, 5);
+    // l.remove(2);
+    // l.insert(3, 5);
+    // l.popBackToNumber(3);
+    // l.removeSecondElement(2);
+    // l.insertEnd();
+    // l.pushBackOneToNumber(3);
+    // l.pushPenultimate(100);
     l.print();
 }
+
+// popBackToNumber(3):
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 50 -> 1 -> 75 -> 60 -> 80 -> 30 ->
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 50 -> 1 -> 75 ->
+
+// removeSecondElement(2):
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 50 -> 1 -> 75 ->
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 75 ->
+
+// insertEnd:
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 50 -> 1 -> 75 -> 60 -> 80 -> 30 -> 13 ->
+
+// pushBackOneToNumber(3):
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 50 -> 1 -> 75 -> 60 -> 80 -> 30 -> 1 -> 2 -> 3 ->
+
+// pushPenultimate(100):
+// 34 -> 25 -> 78 -> 5 -> 8 -> 3 -> 10 -> 3 -> 50 -> 1 -> 75 -> 60 -> 80 -> 100 -> 30 ->
