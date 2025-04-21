@@ -64,7 +64,7 @@ struct List {
         if (empty()) {
             return false;
         }
-        if (size() == 1) {
+        if (count == 1) {
             clearWhenOne();
             return false;
         }
@@ -79,7 +79,7 @@ struct List {
         if (empty()) {
             return;
         }
-        if (size() == 1) {
+        if (count == 1) {
             clearWhenOne();
             return;
         }
