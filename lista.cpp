@@ -149,9 +149,8 @@ struct List {
 
     void removeSecondElement(int n) {
         if (n >= count) {
-            while (popFront()) {
+            while (popFront()) {}
 
-            }
             return;
         }
         Node *aux = start;
