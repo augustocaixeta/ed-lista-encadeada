@@ -74,7 +74,7 @@ int main() {
         List *original = new List();
         List *ordenada = new List();
 
-        for (int i = 0; i < M; i++) {
+        while (M--) {
             int nota;
             scanf("%d", &nota);
             original->insFinal(nota);
