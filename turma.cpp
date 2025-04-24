@@ -36,8 +36,9 @@ struct List {
     }
 
     void print() {
-        if (head == NULL) return;
-
+        if (head == NULL) {
+            return;
+        }
         Node *a = head;
         double highest = head->average;
 
