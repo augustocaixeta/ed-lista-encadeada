@@ -17,7 +17,7 @@ struct List {
         head = NULL;
     }
 
-    void insSort(int pages) {
+    void ins(int pages) {
         Node *n = new Node(pages);
         if (head == NULL || pages < head->pages) {
             n->next = head;
@@ -55,7 +55,8 @@ int main() {
     while (n--) {
         int value;
         scanf("%d", &value);
-        l.insSort(value);
+        // sorted insert (desc)
+        l.ins(value);
     }
 
     int p;
