@@ -55,7 +55,7 @@ int main() {
     while (n--) {
         int value;
         scanf("%d", &value);
-        // sorted insert (desc)
+        // sorted insert (asc)
         l.ins(value);
     }
 
